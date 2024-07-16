@@ -6,7 +6,6 @@ import SpotifyAuthButton from "./components/SpotifyAuthButton.js";
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import SongList from "./components/SongList";
 import HomeScreen from "./screens/HomeScreen";
 import SongScreen from "./screens/SongScreen";
 import ChatScreen from "./screens/ChatScreen";

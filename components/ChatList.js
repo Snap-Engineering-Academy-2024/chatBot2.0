@@ -1,16 +1,16 @@
 import { FlatList, View, StyleSheet } from "react-native";
 import { Themes } from "../assets/Themes";
-import Song from "./Song";
+import Song from "./Chat";
 
 const renderChat = ({ item, index }) => (
   // this is a "quick and dirty" hack for the moment, we'll want to make a new component later
   <Song
     index={index}
     imageUrl={item.imageUrl}
-    songTitle={item.name}
-    songArtists={[{ name: "developer" }]}
+    chatTitle={item.name}
+    songArtists={[{ name: "SEA Games" }]}
     albumName={item.id}
-    duration={1000}
+    //duration={1000}
   />
 );
 

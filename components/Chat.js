@@ -21,10 +21,10 @@ const SongArtists = ({ SongArtists }) => {
 const Song = ({
   index,
   imageUrl,
-  songTitle,
+  chatTitle,
   songArtists,
   albumName,
-  duration,
+  //duration,
 }) => {
   const navigation = useNavigation();
 
@@ -45,16 +45,16 @@ const Song = ({
         />
         <View style={styles.songArtistContainer}>
           <Text style={[styles.songTitle]} numberOfLines={1}>
-            {songTitle}
+            {chatTitle}
           </Text>
           <SongArtists SongArtists={songArtists} />
         </View>
         <Text style={[styles.albumName]} numberOfLines={1}>
           {albumName}
         </Text>
-        <Text style={[styles.duration]} numberOfLines={1}>
+        {/* <Text style={[styles.duration]} numberOfLines={1}>
           {millisToMinutesAndSeconds(duration)}
-        </Text>
+        </Text> */}
       </View>
     </Pressable>
   );
