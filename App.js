@@ -2,12 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useSpotifyAuth } from "./utils";
 import { Themes } from "./assets/Themes";
-import SpotifyAuthButton from "./components/SpotifyAuthButton.js";
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
-import SongScreen from "./screens/SongScreen";
 import ChatScreen from "./screens/ChatScreen";
 
 const Stack = createStackNavigator();
