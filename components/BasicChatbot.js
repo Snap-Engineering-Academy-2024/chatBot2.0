@@ -1,3 +1,4 @@
+//Created a function to hold response-> called response 
 import React, { useState, useCallback, useEffect } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 import { StatusBar } from "expo-status-bar";
@@ -6,7 +7,7 @@ import { getChat } from "../utils/getChatGPT";
 
 const CHATBOT_USER_OBJ = {
   _id: 2,
-  name: "React Native Chatbot",
+  name: "assistant",
   avatar: "https://loremflickr.com/140/140",
 };
 
@@ -19,43 +20,41 @@ const prompt = [
 ];
 
 
-
-
-
 export default function BasicChatbot() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    setMessages([]);
     fetchInitialMessage()
-    // setMessages([
-    //   {
-    //     _id: 1,
-    //     text: "Hello, welcome to simple trivia! Say 'Yes' when you're ready to play!",
-    //     createdAt: new Date(),
-    //     user: CHATBOT_USER_OBJ,
-    //   },
-    // ]);
   }, []);
   
   async function fetchInitialMessage() {
+    //console.log(process.env.EXPO_PUBLIC_GPT_API);
     const response = await getChat(prompt);
     const message = response.choices[0].message;
-   console.log("message: ", message);
     const content = response.choices[0].message.content;
-    console.log("content: ", content);
+
+    //console.logs() to check the call to API messages
+    // console.log("message: ", message);
+    // console.log("content: ", content);
  
+    //Print API messages to screen with addbotMessage()
    addBotMessage(content);
- 
-   
+
  }
   const addNewMessage = (newMessages) => {
+   
     setMessages((previousMessages) => {
       // console.log("PREVIOUS MESSAGES:", previousMessages);
       // console.log("NEW MESSAGE:", newMessages);
       return GiftedChat.append(previousMessages, newMessages);
     });
+
   };
+
+  //for addBotMessage pass 'content' and use object to print 'text' to screen by assigning it's value of text
   const addBotMessage = (content) => {
+
     addNewMessage([
       {
         _id: Math.round(Math.random() * 1000000),
@@ -64,16 +63,20 @@ export default function BasicChatbot() {
         user: CHATBOT_USER_OBJ,
       },
     ]);
+
   };
 
-
-  const respondToUser = (userMessages) => {
-    console.log("User message text:", userMessages[0].text);
-
-    // Simple chatbot logic (aka Checkpoint 2 onwards) here!
-
-    addBotMessage();
-  };
+  const respondToUser = async (newMessages) => {
+    //console.log("newMessage", newMessages)
+  const allMessages = [...messages.map((msg) => ({role: msg.user._id === 1 ? "user" : "assistant", content: msg.text})).reverse(), 
+    {role: 'user', content: newMessages[0].text}, 
+  ];
+    console.log("allMessages", allMessages)
+     const response = await getChat([...prompt, ...allMessages]);
+     const content = response.choices[0].message.content;
+   
+    addBotMessage(content);
+  }
 
   const onSend = useCallback((messages = []) => {
     addNewMessage(messages);
@@ -88,7 +91,7 @@ export default function BasicChatbot() {
       }}
       user={{
         _id: 1,
-        name: "Baker",
+        name: "user",
       }}
       renderUsernameOnMessage={true}
     />

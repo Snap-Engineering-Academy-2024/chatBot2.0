@@ -1,7 +1,7 @@
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Accept", "application/json");
-myHeaders.append("Authorization", "Bearer sk-proj-TUYWMGvtBDa9W43hKZJ7T3BlbkFJrbAJaNBHg2utFkTEv1aY");
+myHeaders.append("Authorization", process.env.EXPO_PUBLIC_GPT_API);
 
 export const getChat = async (messages) => {
   const raw = JSON.stringify({

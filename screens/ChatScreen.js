@@ -7,11 +7,12 @@ import MalenasChatbot from "../components/MalenasChatbot";
 import BeesChatbot from "../components/BeesChatbot";
 
 
+
 // prettier-ignore
 export const CHATBOTS = {
   "BasicChatbot": {
     id: "BasicChatbot",
-    name: "React Native Chatbot",
+    name: "EmojisMovieGPT",
     imageUrl: "https://loremflickr.com/140/140",
     component: BasicChatbot,
   },
@@ -25,8 +26,8 @@ export const CHATBOTS = {
 
   "MalenasChatbot": {
     id: "MalenasChatbot",
-    name: "Malena's Riddle Quest",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtNE-Yn-eQZxEtxjoz4akhS27ukQI1_ynggg&s",
+    name: "Malena's Mysteries",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcqJS1MnlHOqVyt7ThrsCPHsUd710P_bWuFA&s",
     component: MalenasChatbot,
   },
 
